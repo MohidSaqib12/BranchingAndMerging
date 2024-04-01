@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up Form</h1>
+<form action="Signin.html" onsubmit="return validation()">
+ <input type="text" placeholder="User Name" id="user"> <br>
+ <span id="usererror" style="color: red;"></span> <br>
+
+ <input type="email" placeholder="sahia_jamal@gmail.com" id="email"> <br>
+ <span id="emailerror" style="color: red;"></span> <br>
+
+ <input type="password" placeholder="Password" id="pwd"> <br>
+ <span id="pwderror" style="color: red;"></span> <br>
+
+ <input type="text" placeholder="Confirm Password" id="cpwd"> <br>
+ <span id="cperror" style="color: red;"></span> <br>
+
+ <input type="text" placeholder="Mobile Number" id="mobile"> <br>
+ <span id="mobileerror" style="color: red;"></span> <br>
+
+ <input type="submit" value="Sign UP">
+
+</form>
+<script>
+    function validation()
+    {
+          //getting values from textboxes
+          var u = document.getElementById("user").value ;
+            var e = document.getElementById("email").value ;
+            var p = document.getElementById("pwd").value ;
+            var cp = document.getElementById("cpwd").value ;
+            var m = document.getElementById("mobile").value ;
+            // validate/check values are correct or not
+            var usercheck = /^[a-zA-Z. ]{3,20}$/ ;
+            var emailcheck = /^[a-zA-Z_]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z.]{2,6}$/ ;
+            var mobilecheck = /^[0-9]{11}$/;
+            var passcheck = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{12,}$/;
+            if(usercheck.test(u) )
+            {
+                document.getElementById("usererror").innerHTML = "";
+            }
+            else
+            {
+                document.getElementById("usererror").innerHTML = " **Invalid  User Name** " ;
+                return false;
+            }
+            if(emailcheck.test(e) )
+            {
+                document.getElementById("emailerror").innerHTML = "";
+            }
+            else
+            {
+                document.getElementById("emailerror").innerHTML = " **Invalid  Email** " ;
+                return false;
+            }
+            if(passcheck.test(p) )
+            {
+                document.getElementById("pwderror").innerHTML = "";
+            }
+            else
+            {
+                document.getElementById("pwderror").innerHTML = " **Password must contain one uppercase, one digit & one special character and should be 12 characters long** " ;
+                return false;
+            }
+            if(cp.match(p) )
+            {
+                document.getElementById("cperror").innerHTML = "";
+            }
+            else
+            {
+                document.getElementById("cperror").innerHTML = "**Password must match**";
+                return false;
+            }
+            if(mobilecheck.test(m) )
+            {
+                document.getElementById("mobileerror").innerHTML = "";
+            }
+            else
+            {
+                document.getElementById("mobileerror").innerHTML = " **Invalid Mobile Number** " ;
+                return false;
+            }
+            localStorage.setItem("Email",e);
+            localStorage.setItem("Password",p);
+            localStorage.setItem("UserName",u);
+
+        }
+    
+</script>
+</body>
+</html>

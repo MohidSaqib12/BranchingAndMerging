@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<body>
+    <h1>Sign In</h1>
+    <input type="email" placeholder="Email" id="email"> <br>
+    <input type="password" placeholder="Password" id="pwd"> <br>
+     <input type="submit" value="Sign In" onclick="signin()"> <br>
+      <span id="login" style="color: red;"></span>
+
+      <script>
+        function signin()
+    {
+        var e = document.getElementById("email").value;
+        var p = document.getElementById("pwd").value;
+
+        var emailcheck = localStorage.getItem("Email");
+        var pwdcheck= localStorage.getItem("Password");
+
+        if(e == emailcheck && p==pwdcheck)
+        {
+            localStorage.setItem("code","secret");
+            window.location.href = "index.html" ;
+        }
+        else
+        {
+            document.getElementById("login").innerHTML = "Invalid Email or Password" ; 
+
+        }
+    }
+      </script>
+</body>
+</html>
